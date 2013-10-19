@@ -2,7 +2,10 @@ package com.belo82.facetsearch;
 
 import com.belo82.facetsearch.analyzer.CustomAnalyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.document.*;
+import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
+import org.apache.lucene.document.IntField;
+import org.apache.lucene.document.TextField;
 import org.apache.lucene.facet.index.FacetFields;
 import org.apache.lucene.facet.params.FacetSearchParams;
 import org.apache.lucene.facet.search.CountFacetRequest;
@@ -95,13 +98,12 @@ public class Indexer {
 
             for (Iterator<JsonNode> it2 = item.get(OWNERS).getElements(); it2.hasNext();) {
                 JsonNode ownerNode = it2.next();
-
-                // logger.debug("owner: {}", ownerNode.getTextValue());
                 doc.add(new TextField(OWNERS, ownerNode.getTextValue(), Field.Store.YES));
             }
 
             categories = new ArrayList<>();
-            CategoryPath categoryPath = new CategoryPath(FACET_SHOP_CATEGORY, item.get(FACET_SHOP_CATEGORY).getTextValue());
+            CategoryPath categoryPath = new CategoryPath(FACET_SHOP_CATEGORY,
+                    item.get(FACET_SHOP_CATEGORY).getTextValue(), item.get(AREA).getTextValue());
             categories.add(categoryPath);
             taxo.addCategory(categoryPath);
             facetFields.addFields(doc, categories);
@@ -119,12 +121,18 @@ public class Indexer {
 
 
         QueryParser queryParser = new QueryParser(Version.LUCENE_42, NAME, new StandardAnalyzer(Version.LUCENE_42));
-        Query luceneQuery = queryParser.parse(query);
+        Query luceneQuery =  new MatchAllDocsQuery(); //queryParser.parse(query);
+
+        // TODO: how to narrow down search only to some categories?
+//        CategoryListParams catListParams = new CategoryListParams();
+//        luceneQuery = new DrillDownQuery(new FacetIndexingParams(catListParams), luceneQuery);
 
         // Collectors to get top results and facets
-        TopScoreDocCollector topScoreDocCollector = TopScoreDocCollector.create(10, true);
+        TopScoreDocCollector topScoreDocCollector = TopScoreDocCollector.create(100, true);
 
-        FacetSearchParams facetSearchParams = new FacetSearchParams(new CountFacetRequest(new CategoryPath(FACET_SHOP_CATEGORY),10));
+        FacetSearchParams facetSearchParams = new FacetSearchParams(
+                new CountFacetRequest(new CategoryPath(FACET_SHOP_CATEGORY),100),
+                new CountFacetRequest(new CategoryPath(FACET_SHOP_CATEGORY + "/cafe", '/'),100));
 
         FacetsCollector facetsCollector = FacetsCollector.create(facetSearchParams, iReader, taxo);
         iSearcher.search(luceneQuery, MultiCollector.wrap(topScoreDocCollector, facetsCollector));
@@ -143,15 +151,23 @@ public class Indexer {
 
         logger.debug("Facets:");
         for(FacetResult facetResult : facetsCollector.getFacetResults()) {
-            logger.debug("- " + facetResult.getFacetResultNode().label);
-            for(FacetResultNode facetResultNode: facetResult.getFacetResultNode().subResults) {
-                logger.debug("    - {} ({})", facetResultNode.label.toString(),
-                        facetResultNode.value);
-                for(FacetResultNode subFacetResultNode: facetResultNode.subResults) {
-                    logger.debug("        - {} ({})", subFacetResultNode.label.toString(),
-                            subFacetResultNode.value);
-                }
-            }
+            printFacets(facetResult.getFacetResultNode(), 0);
         }
+    }
+
+    private void printFacets(FacetResultNode resultNode, int indention) {
+        logger.debug(doIndention(indention) + resultNode.label + " (" + resultNode.value + ")");
+        for(FacetResultNode rn2 : resultNode.subResults)
+            printFacets(rn2, indention + 1);
+    }
+
+    private String doIndention(int indention) {
+        int TAB_SIZE = 4;
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < indention * TAB_SIZE; i++)
+            sb.append(" ");
+
+        return sb.append("- ").toString();
     }
 }

@@ -72,7 +72,7 @@
         "address": "582, Burnley Road, Rossendale, Lancashire, BB4 8AJ"
     },
     {
-        "id": 9,
+        "id": 10,
         "name": "Crimson House",
         "owners": ["Aiden Brown"],
         "shop_category": "cafe",
@@ -80,7 +80,7 @@
         "address": "582, Burnley Road, Rossendale, Lancashire, BB4 8AJ"
     },
     {
-        "id": 10,
+        "id": 11,
         "name": "Welcome Village",
         "owners": ["Owen Thomas"],
         "shop_category": "cafe",
