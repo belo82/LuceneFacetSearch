@@ -3,7 +3,7 @@
         "id": 1,
         "name": "Budgens",
         "owners": ["Dylan James", "Kristin Sullivan"],
-        "category": "supermarket",
+        "shop_category": "supermarket",
         "area": "Fulham",
         "address": "57-59, Parsons Green Lane, Fulham, London, SW6 4JA"
     },
@@ -11,7 +11,7 @@
         "id": 2,
         "name": "Sainsbury's",
         "owners": ["Olivia Edwards"],
-        "category": "supermarket",
+        "shop_category": "supermarket",
         "area": "Fulham",
         "address": "582, Fulham Road, Fulham, London, SW6 5NT"
     },
@@ -19,7 +19,7 @@
         "id": 3,
         "name": "Renata Supermarket",
         "owners": ["Renata Smith"],
-        "category": "supermarket",
+        "shop_category": "supermarket",
         "area": "Chelsea",
         "address": "196, Kings Road, Chelsea, London, SW3 5XP"
     },
@@ -27,7 +27,7 @@
         "id": 4,
         "name": "Worlds End",
         "owners": ["Victoria Scott", "Renata Smith"],
-        "category": "bookshop",
+        "shop_category": "bookshop",
         "area": "Chelsea",
         "address": "357, Kings Road, Chelsea, London, SW3 5ES"
     },
@@ -35,7 +35,7 @@
         "id": 5,
         "name": "Cornerstone",
         "owners": ["Ava Griffin"],
-        "category": "bookshop",
+        "shop_category": "bookshop",
         "area": "Battersea",
         "address": "34, Strutton Ground, Westminster, London, SW1P 2HR"
     },
@@ -43,7 +43,7 @@
         "id": 6,
         "name": "Oxfam",
         "owners": ["Camila Taylor"],
-        "category": "bookshop",
+        "shop_category": "bookshop",
         "area": "Putney",
         "address": "375, Upper Richmond Road West, Mortlake, London, SW14 7NX"
     },
@@ -51,7 +51,7 @@
         "id": 7,
         "name": "Tried & True",
         "owners": ["Peter Taylor"],
-        "category": "cafe",
+        "shop_category": "cafe",
         "area": "Putney",
         "address": "279, Upper Richmond Road, Putney, London, SW15 6SP"
     },
@@ -59,7 +59,7 @@
         "id": 8,
         "name": "Mini Bar",
         "owners": ["Joe Black", "Peter Taylor"],
-        "category": "cafe",
+        "shop_category": "cafe",
         "area": "Surrey Quays",
         "address": "279, Upper Richmond Road, Putney, London, SW15 6SP"
     },
@@ -67,15 +67,23 @@
         "id": 9,
         "name": "Crimson House",
         "owners": ["Aiden Brown"],
-        "category": "cafe",
+        "shop_category": "cafe",
         "area": "Canada Water",
+        "address": "582, Burnley Road, Rossendale, Lancashire, BB4 8AJ"
+    },
+    {
+        "id": 9,
+        "name": "Crimson House",
+        "owners": ["Aiden Brown"],
+        "shop_category": "cafe",
+        "area": "Fulham",
         "address": "582, Burnley Road, Rossendale, Lancashire, BB4 8AJ"
     },
     {
         "id": 10,
         "name": "Welcome Village",
         "owners": ["Owen Thomas"],
-        "category": "cafe",
+        "shop_category": "cafe",
         "area": "Canada Water",
         "address": "255, Burnley Road East, Rossendale, Lancashire, BB4 9HU"
     }

@@ -3,6 +3,7 @@ package com.belo82.facetsearch;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.node.ArrayNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,6 +27,8 @@ public class Main {
         logger.debug("data: {}", data);
 
         Indexer indexer = new Indexer();
-        indexer.createIndex(data);
+        indexer.createIndex((ArrayNode) data);
+
+        indexer.doSearch("area: fulham");
     }
 }
