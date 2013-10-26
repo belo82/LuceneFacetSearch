@@ -18,17 +18,17 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException, ParseException {
-        logger.debug("Hello world!");
+        Indexer indexer = new Indexer();
+        indexer.createIndex(readData());
 
+        indexer.doSearch("area: fulham");
+    }
+
+    public static ArrayNode readData() throws IOException {
         InputStream inputStream = Main.class.getClassLoader().getResourceAsStream("com/belo82/facetsearch/data.json");
         ObjectMapper mapper = new ObjectMapper();
         JsonNode data = mapper.readTree(inputStream);
 
-        logger.debug("data: {}", data);
-
-        Indexer indexer = new Indexer();
-        indexer.createIndex((ArrayNode) data);
-
-        indexer.doSearch("area: fulham");
+        return (ArrayNode) data;
     }
 }

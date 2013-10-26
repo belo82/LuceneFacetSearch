@@ -5,7 +5,9 @@
         "owners": ["Dylan James", "Kristin Sullivan"],
         "shop_category": "supermarket",
         "area": "Fulham",
-        "address": "57-59, Parsons Green Lane, Fulham, London, SW6 4JA"
+        "address": "57-59, Parsons Green Lane, Fulham, London, SW6 4JA",
+        "code": "6C/111/2010",
+        "founded": "12-12-1998"
     },
     {
         "id": 2,
@@ -13,7 +15,9 @@
         "owners": ["Olivia Edwards"],
         "shop_category": "supermarket",
         "area": "Fulham",
-        "address": "582, Fulham Road, Fulham, London, SW6 5NT"
+        "address": "582, Fulham Road, Fulham, London, SW6 5NT",
+        "code": "1230934821",
+        "founded": "31-01-1967"
     },
     {
         "id": 3,
@@ -21,7 +25,9 @@
         "owners": ["Renata Smith"],
         "shop_category": "supermarket",
         "area": "Chelsea",
-        "address": "196, Kings Road, Chelsea, London, SW3 5XP"
+        "address": "196, Kings Road, Chelsea, London, SW3 5XP",
+        "code": "6Wab5/8c/2013",
+        "founded": "23-09-1994"
     },
     {
         "id": 4,
@@ -29,7 +35,9 @@
         "owners": ["Victoria Scott", "Renata Smith"],
         "shop_category": "bookshop",
         "area": "Chelsea",
-        "address": "357, Kings Road, Chelsea, London, SW3 5ES"
+        "address": "357, Kings Road, Chelsea, London, SW3 5ES",
+        "code": "19382742",
+        "founded": "05-06-1989"
     },
     {
         "id": 5,
@@ -37,7 +45,9 @@
         "owners": ["Ava Griffin"],
         "shop_category": "bookshop",
         "area": "Battersea",
-        "address": "34, Strutton Ground, Westminster, London, SW1P 2HR"
+        "address": "34, Strutton Ground, Westminster, London, SW1P 2HR",
+        "code": "006/54abC/2008",
+        "founded": "17-04-2003"
     },
     {
         "id": 6,
@@ -45,7 +55,9 @@
         "owners": ["Camila Taylor"],
         "shop_category": "bookshop",
         "area": "Putney",
-        "address": "375, Upper Richmond Road West, Mortlake, London, SW14 7NX"
+        "address": "375, Upper Richmond Road West, Mortlake, London, SW14 7NX",
+        "code": "6Wab5/8c/2013",
+        "founded": "12-02-2013"
     },
     {
         "id": 7,
@@ -53,7 +65,9 @@
         "owners": ["Peter Taylor"],
         "shop_category": "cafe",
         "area": "Putney",
-        "address": "279, Upper Richmond Road, Putney, London, SW15 6SP"
+        "address": "279, Upper Richmond Road, Putney, London, SW15 6SP",
+        "code": "3928472829",
+        "founded": "02-11-1998"
     },
     {
         "id": 8,
@@ -61,7 +75,9 @@
         "owners": ["Joe Black", "Peter Taylor"],
         "shop_category": "cafe",
         "area": "Surrey Quays",
-        "address": "279, Upper Richmond Road, Putney, London, SW15 6SP"
+        "address": "279, Upper Richmond Road, Putney, London, SW15 6SP",
+        "code": "42a/c44/1998",
+        "founded": "26-05-1991"
     },
     {
         "id": 9,
@@ -69,15 +85,19 @@
         "owners": ["Aiden Brown"],
         "shop_category": "cafe",
         "area": "Canada Water",
-        "address": "582, Burnley Road, Rossendale, Lancashire, BB4 8AJ"
+        "address": "582, Burnley Road, Rossendale, Lancashire, BB4 8AJ",
+        "code": "5Acb/d6c/2013",
+        "founded": "16-06-1998"
     },
     {
         "id": 10,
         "name": "Crimson House",
         "owners": ["Aiden Brown"],
-        "shop_category": "cafe",
+        "shop_category": "bookshop",
         "area": "Fulham",
-        "address": "582, Burnley Road, Rossendale, Lancashire, BB4 8AJ"
+        "address": "582, Burnley Road, Rossendale, Lancashire, BB4 8AJ",
+        "code": "6Wab5/8tx/1234",
+        "founded": "09-07-2005"
     },
     {
         "id": 11,
@@ -85,6 +105,8 @@
         "owners": ["Owen Thomas"],
         "shop_category": "cafe",
         "area": "Canada Water",
-        "address": "255, Burnley Road East, Rossendale, Lancashire, BB4 9HU"
+        "address": "255, Burnley Road East, Rossendale, Lancashire, BB4 9HU",
+        "code": "2918373",
+        "founded": "30-08-1996"
     }
 ]
