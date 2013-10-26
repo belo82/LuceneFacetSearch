@@ -96,7 +96,7 @@ public class Indexer {
             doc.add(new TextField(NAME, item.get(NAME).getTextValue(), Field.Store.YES));
             doc.add(new TextField(SHOP_CATEGORIES, item.get(FACET_SHOP_CATEGORY).getTextValue(), Field.Store.YES));
             doc.add(new TextField(AREA, item.get(AREA).getTextValue(), Field.Store.YES));
-            doc.add(new TextField(ADDRESS, item.get(ADDRESS).getTextValue(), Field.Store.YES));
+            doc.add(new StringField(ADDRESS, item.get(ADDRESS).getTextValue(), Field.Store.YES));
             doc.add(new StringField(CODE, item.get(CODE).getTextValue().toLowerCase(), Field.Store.YES));
             doc.add(new LongField(FOUNDED, parseDate(item.get(FOUNDED).getTextValue()), Field.Store.YES));
 
@@ -135,6 +135,24 @@ public class Indexer {
     private IndexSearcher openSearcher() throws IOException {
         DirectoryReader iReader = DirectoryReader.open(iWriter, true);
         return new IndexSearcher(iReader);
+    }
+
+    /**
+     * P-o-C that I can search for facet label containing whitespace charcters, commas, etc. and still get correct results
+     *
+     * @param value facet label, e.g. "43 Parson's Green, SW14 3EC"
+     */
+    public List<Document> doFacetLabelSearch(String value) throws IOException, ParseException {
+        IndexSearcher iSearcher = openSearcher();
+
+        TermQuery query = new TermQuery(new Term(ADDRESS, value));
+        TopDocs topDocs = iSearcher.search(query, 100);
+
+        List<Document> result = new ArrayList<>(topDocs.totalHits);
+        for (ScoreDoc scoreDoc : topDocs.scoreDocs)
+            result.add(iSearcher.doc(scoreDoc.doc));
+
+        return result;
     }
 
     public List<Document> doPrefixSearch(String value) throws IOException, ParseException {
